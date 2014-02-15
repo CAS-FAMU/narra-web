@@ -17,7 +17,8 @@ var gulp = require('gulp'),
     jade = require('gulp-jade'),
     gutil = require('gulp-util'),
     http = require('http'),
-    ecstatic = require('ecstatic');
+    ecstatic = require('ecstatic'),
+    bowerFiles = require("gulp-bower-files");
 
 
 // Pages
@@ -74,8 +75,15 @@ gulp.task('default', ['clean'], function() {
     gulp.start('pages', 'styles', 'scripts', 'images');
 });
 
+gulp.task('bower', function() {
+  bowerFiles()
+    .pipe(gulp.dest("./lib"));
+});
+
 // Watch
 gulp.task('watch', function() {
+
+  gulp.start(['bower']);
 
   console.log('Listening on http://0.0.0.0:8080');
   http.createServer(

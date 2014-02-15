@@ -1,0 +1,32 @@
+{
+  "name": "narra_web",
+  "version": "0.0.1",
+  "homepage": "https://github.com/CAS-FAMU/narra_web",
+  "authors": [
+    "Mario Vejlupek <mario@vejlupek.cz>"
+  ],
+  "description": "Narra Project Website",
+  "main": "index.js",
+  "keywords": [
+    "gulp",
+    "static",
+    "website"
+  ],
+  "license": "CC-BY-NC-ND-3.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1"
+  },
+  "overrides": {
+    "jquery": {
+      "main": "jquery.min.js"
+    }
+  }
+}

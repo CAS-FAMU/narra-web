@@ -38,6 +38,8 @@
     "gulp-jade": "~0.4.2",
     "gulp-util": "~2.2.14",
     "http": "0.0.0",
-    "ecstatic": "~0.4.13"
+    "ecstatic": "~0.4.13",
+    "gulp-bower": "0.0.2",
+    "gulp-bower-files": "~0.1.8"
   }
 }
