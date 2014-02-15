@@ -1,0 +1,3 @@
+var xxx;
+
+xxx = 'xxx';
