@@ -15,7 +15,9 @@ var gulp = require('gulp'),
     server = lr(),
     coffee = require('gulp-coffee'),
     jade = require('gulp-jade'),
-    gutil = require('gulp-util');
+    gutil = require('gulp-util'),
+    http = require('http'),
+    ecstatic = require('ecstatic');
 
 
 // Pages
@@ -75,6 +77,11 @@ gulp.task('default', ['clean'], function() {
 // Watch
 gulp.task('watch', function() {
 
+  console.log('Listening on http://0.0.0.0:8080');
+  http.createServer(
+    ecstatic({ root: __dirname + '/' })
+  ).listen(8080);
+
   // Listen on port 35729
   server.listen(35729, function (err) {
     if (err) {
@@ -88,7 +95,7 @@ gulp.task('watch', function() {
     gulp.watch('src/styles/**/*.styl', ['styles']);
 
     // Watch .js files
-    gulp.watch('src/scripts/**/*.js', ['scripts']);
+    gulp.watch('src/scripts/**/*.coffee', ['scripts']);
 
     // Watch image files
     gulp.watch('src/images/**/*', ['images']);

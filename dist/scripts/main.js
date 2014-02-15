@@ -1,3 +1,3 @@
 var xxx;
 
-xxx = 'xxx';
+xxx = '1xccxx';
