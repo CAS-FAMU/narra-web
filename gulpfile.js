@@ -22,29 +22,26 @@ var gulp = require('gulp'),
     bowerFiles = require("gulp-bower-files");
 
 
-// Pages
-gulp.task('pages', function() {
-  return gulp.src('src/pages/*.jade')
-    .pipe(jade())
+
+function generatePages(target) {
+  return gulp.src(target)
+    .pipe(jade().on('error', gutil.log))
     .pipe(livereload(server))
     .pipe(gulp.dest('.'));
-});
+}
 
-// Styles
-gulp.task('styles', function() {
-  return gulp.src('src/styles/*.styl')
-    .pipe(stylus())
+function generateStyles(target) {
+  return gulp.src(target)
+    .pipe(stylus().on('error', gutil.log))
     .pipe(gulp.dest('dist/styles'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(minifycss())
     .pipe(livereload(server))
-    .pipe(gulp.dest('dist/styles'))
-    .pipe(notify({ message: 'Styles task complete' }));
-});
+    .pipe(gulp.dest('dist/styles'));
+}
 
-// Scripts
-gulp.task('scripts', function() {
-  return gulp.src('src/scripts/**/*.coffee')
+function generateScripts(target) {
+  return gulp.src(target)
     .pipe(coffee({bare: true}).on('error', gutil.log))
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
@@ -53,17 +50,47 @@ gulp.task('scripts', function() {
     .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())
     .pipe(livereload(server))
-    .pipe(gulp.dest('dist/scripts'))
-    .pipe(notify({ message: 'Scripts task complete' }));
+    .pipe(gulp.dest('dist/scripts'));
+}
+
+function generateImages(target) {
+  return gulp.src(target)
+    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })).on('error', gutil.log))
+    .pipe(livereload(server))
+    .pipe(gulp.dest('dist/images'));
+}
+
+
+// Pages
+gulp.task('pages', function() {
+  return gulp.src('src/pages/*.jade')
+    .on('data', function(file) {
+        return generatePages(file.path);
+    });
+});
+
+// Styles
+gulp.task('styles', function() {
+  gulp.src('src/styles/*.styl')
+    .on('data', function(file) {
+        return generateStyles(file.path);
+    });
+});
+
+// Scripts
+gulp.task('scripts', function() {
+  return gulp.src('src/scripts/**/*.coffee')
+    .on('data', function(file) {
+        return generateScripts(file.path);
+    });
 });
 
 // Images
 gulp.task('images', function() {
   return gulp.src('src/images/**/*')
-    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
-    .pipe(livereload(server))
-    .pipe(gulp.dest('dist/images'))
-    .pipe(notify({ message: 'Images task complete' }));
+    .on('data', function(file) {
+        return generateImages(file.path);
+    });
 });
 
 // Clean

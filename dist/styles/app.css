@@ -1,3 +1,5 @@
-body {
+.menu {
+  padding-right: 0;
+  padding-left: 0;
   background: #008000;
 }
