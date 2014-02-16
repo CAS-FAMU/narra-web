@@ -1,12 +1,11 @@
 doctype html
 html(lang="en")
   head
+    link(rel='stylesheet',href='lib.css')
     link(rel='stylesheet',href='dist/styles/app.min.css')
     title= pageTitle
-    script(type='text/javascript').
-      if (foo) {
-         bar(1 + 5)
-      }
+    script(type='text/javascript', src='lib.js')
+    script(type='text/javascript', src='dist/scripts/main.min.js')
   body
     h1 Jade - node template engine
     #container.col

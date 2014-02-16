@@ -18,6 +18,7 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
     http = require('http'),
     ecstatic = require('ecstatic'),
+    bower = require('gulp-bower'),
     bowerFiles = require("gulp-bower-files");
 
 
@@ -25,6 +26,7 @@ var gulp = require('gulp'),
 gulp.task('pages', function() {
   return gulp.src('src/pages/*.jade')
     .pipe(jade())
+    .pipe(livereload(server))
     .pipe(gulp.dest('.'));
 });
 
@@ -72,12 +74,40 @@ gulp.task('clean', function() {
 
 // Default task
 gulp.task('default', ['clean'], function() {
-    gulp.start('pages', 'styles', 'scripts', 'images');
+    gulp.start('pages', 'styles', 'scripts', 'images', 'bower');
 });
 
+
+// Install bower and prepare lib folder
 gulp.task('bower', function() {
-  bowerFiles()
-    .pipe(gulp.dest("./lib"));
+
+  return bower()
+    .on('end', function(){
+
+      bowerFiles()
+        .pipe(gulp.dest("./lib"))
+        .on('end', function(){
+          gulp.start('lib-css', 'lib-js');
+        });
+
+    });
+
+});
+
+// Compile all bower styles to lib.css
+gulp.task('lib-css', function() {
+    return gulp.src('lib/**/*.css')
+      .pipe(minifycss())
+      .pipe(concat('lib.css'))
+      .pipe(gulp.dest('.'));
+});
+
+// Compile all bower scripts to lib.js
+gulp.task('lib-js', function() {
+    return gulp.src('lib/**/*.js')
+      .pipe(uglify())
+      .pipe(concat('lib.js'))
+      .pipe(gulp.dest('.'));
 });
 
 // Watch
