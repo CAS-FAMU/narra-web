@@ -1,4 +1,54 @@
-.menu
-  padding-right 0
-  padding-left 0
-  background green
+body
+  font-family 'Varela Round', sans-serif
+  font-size 18px
+  background url('/dist/images/master.png') center top
+  background url('/dist/images/background.png') center top
+
+.menu-container
+  margin-top 14px
+  height 50px
+  background rgba(255, 255, 255, 0.5)
+  padding 0
+
+  .menu
+    height 50px
+    padding-right 60px
+    padding-left 60px
+
+    // overwrite BS menu bg
+    .nav>li>a:focus, .nav>li>a:hover {
+      background-color: inherit;
+    }
+
+    .nav>li>a
+      color #eb374b
+      padding-top 14px
+
+    .nav>li>a:hover
+      color #eb374b
+      text-decoration underline
+
+    .nav>li>a.try-now
+      border-radius 15px
+      background #eb374b
+      padding 3px
+      color #fff
+
+    .nav>li>a.try-now:hover
+      text-decoration underline
+      color #fff
+
+.logo
+  margin-top 44px
+  text-align center
+
+  h1
+    color #fff
+    font-size 43px
+    line-height 58px
+    margin 0 auto
+    width 600px
+
+
+
+

@@ -1,26 +1,33 @@
 doctype html
 html(lang="en")
   head
+    title Narra
     link(rel='stylesheet',href='lib.css')
     link(rel='stylesheet',href='dist/styles/app.min.css')
-    title= pageTitle
+    link(href='http://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
     script(type='text/javascript', src='lib.js')
     script(type='text/javascript', src='dist/scripts/main.min.js')
   body
-    .container
-      .menu
-        ul.nav.nav-justified
-          li.active
-            a(href='#') Who
-          li
-            a(href='#') What
-          li
-            a(href='#') Where
-          li
-            a(href='#') When
-          li
-            a(href='#') Why
-          li
-            a(href='#') How
-          li
-            a(href='#') Try Now!
+    .menu-container
+      .container
+        .menu
+          ul.nav.nav-justified
+            li.active
+              a(href='#Who') Who
+            li
+              a(href='#What') What
+            li
+              a(href='#Where') Where
+            li
+              a(href='#When') When
+            li
+              a(href='#Why') Why
+            li
+              a(href='#How') How
+            li
+              a(href='#Links') Links
+            li
+              a.try-now(href='#') Try Now!
+    .container.logo
+      img(src='dist/images/logo_homepage.png')
+      h1 Very brief description. Maybe one or two senteses, no more than three lines?
