@@ -4,16 +4,15 @@ body
   background url('/dist/images/master.png') center top
   background url('/dist/images/background.png') center top
 
+.container
+  text-align center
+
 .menu-container
   margin-top 14px
-  height 50px
   background rgba(255, 255, 255, 0.5)
   padding 0
 
   .menu
-    height 50px
-    padding-right 60px
-    padding-left 60px
 
     // overwrite BS menu bg
     .nav>li>a:focus, .nav>li>a:hover {
@@ -47,8 +46,53 @@ body
     font-size 43px
     line-height 58px
     margin 0 auto
-    width 600px
+
+  .twitter-feeds
+    margin-top 13px
+    margin-bottom 22px
+    border 1px solid red
+    height 294px
+
+.bottom-container
+  background #eb374b
+  padding 10px
+
+  a
+    display block
+    margin-top 4px
+    color #fff
+
+  .twitterbird
+    margin 3px 0
+    width 29px
+    height 25px
+    display block
+    background url('/dist/images/tw.png') center center no-repeat
+
+  .twitterbird:hover
+    background-image url('/dist/images/tw_hover.png')
+
+#who
+  text-align center
 
 
+  h2
+    color #eb374b
+    font-size 42px
+    line-height 58px
+    margin 0 auto
 
+  h3
+    text-align left
+    color #eb374b
+    font-size 28px
+  p
+    text-align left
+    font-size 24px
+    line-height 35px
+
+  a
+    color #808080
+    text-decoration underline
+    font-size 16px
 

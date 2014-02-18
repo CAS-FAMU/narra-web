@@ -19,7 +19,8 @@ var gulp = require('gulp'),
     http = require('http'),
     ecstatic = require('ecstatic'),
     bower = require('gulp-bower'),
-    bowerFiles = require("gulp-bower-files");
+    bowerFiles = require("gulp-bower-files"),
+    debug = require('gulp-debug');
 
 
 
@@ -109,21 +110,16 @@ gulp.task('default', ['clean'], function() {
 gulp.task('bower', function() {
 
   return bower()
+    .pipe(gulp.dest('lib/'))
     .on('end', function(){
-
-      bowerFiles()
-        .pipe(gulp.dest("./lib"))
-        .on('end', function(){
-          gulp.start('lib-css', 'lib-js');
-        });
-
+      gulp.start('lib-css', 'lib-js');
     });
 
 });
 
 // Compile all bower styles to lib.css
 gulp.task('lib-css', function() {
-    return gulp.src('lib/**/*.css')
+    return gulp.src('lib/**/*.min.css')
       .pipe(minifycss())
       .pipe(concat('lib.css'))
       .pipe(gulp.dest('.'));
@@ -131,7 +127,7 @@ gulp.task('lib-css', function() {
 
 // Compile all bower scripts to lib.js
 gulp.task('lib-js', function() {
-    return gulp.src('lib/**/*.js')
+    return gulp.src('lib/**/*.min.js')
       .pipe(uglify())
       .pipe(concat('lib.js'))
       .pipe(gulp.dest('.'));

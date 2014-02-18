@@ -40,6 +40,7 @@
     "http": "0.0.0",
     "ecstatic": "~0.4.13",
     "gulp-bower": "0.0.2",
-    "gulp-bower-files": "~0.1.8"
+    "gulp-bower-files": "~0.1.8",
+    "gulp-debug": "~0.2.0"
   }
 }

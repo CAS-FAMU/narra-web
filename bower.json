@@ -21,12 +21,12 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "bootstrap": "~3.1.1"
-  },
   "overrides": {
     "jquery": {
       "main": "jquery.min.js"
     }
+  },
+  "dependencies": {
+    "bootstrap": "~3.1.1"
   }
 }
