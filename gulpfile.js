@@ -1,3 +1,11 @@
+// Options
+var options = {
+  deploy: {
+    target: 'root@static.kuru.cz:/srv/narra.wercajk.com',
+    port: 50022
+  }
+}
+
 // Load plugins
 var gulp = require('gulp'),
     stylus = require('gulp-stylus'),
@@ -20,7 +28,8 @@ var gulp = require('gulp'),
     ecstatic = require('ecstatic'),
     bower = require('gulp-bower'),
     bowerFiles = require("gulp-bower-files"),
-    debug = require('gulp-debug');
+    debug = require('gulp-debug'),
+    exec = require('gulp-exec');
 
 
 
@@ -163,4 +172,11 @@ gulp.task('watch', function() {
 
   });
 
+});
+
+
+// Deploy
+gulp.task('deploy', ['pages'], function() {
+  gulp.src('*')
+    .pipe(exec('scp -i ~/.ssh/id_rsa -r -P <%=options.port%> <%=file.path%> <%= options.target %>', options.deploy))
 });
