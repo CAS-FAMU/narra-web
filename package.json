@@ -21,7 +21,7 @@
     "url": "https://github.com/CAS-FAMU/narra_web/issues"
   },
   "devDependencies": {
-    "gulp": "~3.5.2",
+    "gulp": "~3.8.6",
     "gulp-rename": "~1.0.0",
     "gulp-livereload": "~1.1.1",
     "gulp-stylus": "~0.0.12",
