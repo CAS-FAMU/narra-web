@@ -2,8 +2,10 @@
 
 ## Init
 
-`# npm -g install gulp`
-`# npm install && gulp`
+```bash
+$ npm -g install gulp
+$ npm install && gulp
+```
 
 ## Develop
 
