@@ -1,8 +1,8 @@
 // Options
 var options = {
   deploy: {
-    target: 'root@static.kuru.cz:/srv/narra.wercajk.com',
-    port: 50022
+    target: 'root@fry.marigan.net:/opt/domains/narra.eu/html',
+    port: 22
   }
 }
 

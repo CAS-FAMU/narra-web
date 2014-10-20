@@ -10,7 +10,6 @@ body {
   overflow-x: hidden;
   font-family: 'Varela Round', sans-serif;
   font-size: 18px;
-  background: url("/dist/images/master.png") center top;
   background: url("/dist/images/background.png") center top fixed;
   background-size: cover;
 }
@@ -51,8 +50,15 @@ body {
   min-height: 50%;
 }
 #top .logo {
-  margin-top: 140px;
+  margin-top: 160px;
   text-align: center;
+}
+#top .logo p {
+  text-align: center;
+  color: #fff;
+  font-size: 24px;
+  line-height: 40px;
+  margin-top: 80px;
 }
 #top .logo h1 {
   color: #fff;
@@ -116,5 +122,8 @@ body {
 #Who a {
   color: #808080;
   text-decoration: underline;
-  font-size: 16px;
+  font-size: 24px;
+}
+#How p {
+  margin-bottom: 80px;
 }
